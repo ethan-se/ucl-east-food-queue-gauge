@@ -3,6 +3,8 @@
 
 Gauge and Go is a physical device that displays a simulated data feed of queue lengths at UCL East's three food venues in real time. It is accompanied by a digital twin: a 3D model contained in an AR smartphone app, displaying further details about queue length and food options.
 
+![Picture of Gauge and Go physical device](./docs/physicalGauge-cropped.jpg)
+
 This repository contains:
 -  `/data/` - files used to create a dummy data stream of queuing and menu information, sent via MQTT.
 - `/digitalTwin/` - 3D models, Unity project files and `.apk` file to run the digital twin device on a smartphone.
