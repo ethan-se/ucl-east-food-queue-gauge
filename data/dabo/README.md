@@ -89,4 +89,3 @@ Each MQTT message is sent as JSON and includes:
   "timestamp": "2026-01-06T12:30:00"
 }
 
----
