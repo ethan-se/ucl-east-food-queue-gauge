@@ -89,74 +89,87 @@ Each MQTT message is sent as JSON and includes:
   "timestamp": "2026-01-06T12:30:00"
 }
 
-Devices Using This Data
+---
 
-Physical Gauge
-Arduino subscribes to MQTT and displays:
+## Devices Using This Data
 
-queue band on an analogue gauge,
+The live MQTT data published by DaBo is consumed by three connected components, ensuring data consistency across physical and digital representations.
 
-daily special + price on an LCD.
+### Physical Gauge (Arduino)
+The physical Gauge & Grab device subscribes to MQTT topics and displays:
 
-Digital Gauge (Unity AR)
-Unity subscribes to the same topics to ensure data consistency.
+- **Queue band** (0–5 mins, 5–10 mins, 10+ mins) using an analogue gauge pointer.
+- **Daily menu special and price** on an LCD screen.
 
-Digital Twin Dashboards
-Dashboards display:
+This allows users to quickly understand queue congestion and make informed decisions before joining a queue.
 
-peak queue trends,
+---
 
-daily specials tables,
+### Digital Gauge (Unity AR)
+The digital gauge is implemented as an **Augmented Reality (AR) digital twin** in Unity.
 
-location-specific analytics.
+- Unity subscribes to the **same MQTT topics** as the physical gauge.
+- The AR gauge mirrors the queue band and menu data in real time.
+- Location selection buttons trigger updates without duplicating data logic.
 
-Running DaBo
-Requirements
+This ensures **data parity** between physical and digital devices.
 
-Python 3.9+
+---
 
-MQTT broker (e.g. Mosquitto)
+### Digital Twin Dashboards
+The digital twin dashboards provide expanded contextual information, including:
 
-Python virtual environment (recommended)
+- **Peak queue trends** visualised as line graphs.
+- **Daily specials tables** showing menu items and prices.
+- **Location-specific analytics** for each food outlet.
 
-Run Instructions
+Dashboards update live as new MQTT messages are published.
+
+---
+
+## Running DaBo
+
+### Requirements
+- Python 3.9 or higher
+- MQTT broker (e.g. Mosquitto)
+- Python virtual environment (recommended)
+
+---
+
+### Run Instructions
+
+From the DaBo directory:
+
+```bash
 python main.py
 
-
-Once running, DaBo will continuously publish live MQTT updates.
+Once running, DaBo continuously generates and publishes live MQTT data updates for all three locations.
 
 Limitations
 
-Queue times are simulated and not sensor-derived.
+This project uses simulated (dummy) data to demonstrate a complete end-to-end data pipeline rather than a fully sensor-driven deployment.
 
-Human behaviour variability is simplified.
+Queue times are simulated and are not derived from real-time sensing hardware.
 
-Data accuracy depends on initial assumptions from observations.
+Human behaviour variability (for example, sudden rushes or staffing changes) is simplified within the data model.
+
+Data accuracy depends on assumptions informed by on-site observations and staff interviews, rather than continuous automated measurement.
+
+These limitations are acknowledged as part of a prototyping and demonstrative approach, designed to explore system architecture, data flow, and physical–digital integration rather than provide exact real-world prediction.
 
 Future Development
 
-Embed live user Q&A feedback forms at food locations.
+Future iterations of the project could significantly enhance realism, accuracy, and scalability. Potential improvements include:
 
-Compare user-reported wait times with simulated data.
+Embedding live user Q&A feedback forms at food locations to collect real user-reported waiting times and experiences.
 
-Introduce machine-learning-based queue prediction.
+Comparing user-reported wait times with simulated values to improve calibration and reliability.
 
-Integrate real sensors (IR counters, cameras).
+Introducing machine learning models to predict queue length and waiting time based on historical patterns.
 
-Store historical MQTT data for long-term analysis.
+Integrating real-time sensing technologies, such as infrared people counters or camera-based detection systems.
 
-Academic Relevance (UCL Assessment Alignment)
+Storing historical MQTT data to enable long-term trend analysis, performance optimisation, and operational insights.
 
-This system demonstrates:
+These developments would support the transition from a conceptual prototype toward a fully data-driven smart queue monitoring system.
 
-data collection methodology,
-
-structured dummy data creation,
-
-live data simulation,
-
-MQTT communication,
-
-physical–digital integration,
-
-reproducibility and documentation.
