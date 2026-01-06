@@ -13,16 +13,10 @@
   }
 }
 
-Topic Differentiation
-
-Each location publishes to a location-specific MQTT topic under the same root:
 
 student/CASA0019/gauge&grab/pool_street/state
 student/CASA0019/gauge&grab/marshgate_cafe/state
 student/CASA0019/gauge&grab/marshgate_canteen/state
-
-The same device template applies to all three topics.
-Example (Pool Street Café):
 
 {
   "location": "pool_street",
@@ -33,9 +27,6 @@ Example (Pool Street Café):
   "weekday": "Tuesday",
   "timestamp": "2026-01-06T12:30:00"
 }
-
-
-Example (Marshgate Canteen):
 
 {
   "location": "marshgate_canteen",
