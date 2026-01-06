@@ -1,28 +1,3 @@
-Device Template Definition (Gauge & Grab)
-
-The device_template.json file defines a single, shared data contract used by all three food locations in the Gauge & Grab project:
-
-Pool Street Café
-
-Marshgate Café
-
-Marshgate Canteen
-
-Rather than creating separate schemas per location, the project uses one unified device template, ensuring that:
-
-all MQTT messages follow the same structure,
-
-physical and digital devices can subscribe without custom parsing,
-
-the system remains scalable and easy to extend.
-
-Each location is distinguished at runtime by:
-
-its MQTT topic, and
-
-the location field inside the payload.
-
-Exact device_template.json Used in the Project
 {
   "device_type": "GaugeAndGrab",
   "root_topic": "student/CASA0019/gauge&grab",
@@ -38,8 +13,7 @@ Exact device_template.json Used in the Project
   }
 }
 
-How This Template Was Used for All Three Locations
-1. Topic Differentiation
+Topic Differentiation
 
 Each location publishes to a location-specific MQTT topic under the same root:
 
@@ -47,13 +21,7 @@ student/CASA0019/gauge&grab/pool_street/state
 student/CASA0019/gauge&grab/marshgate_cafe/state
 student/CASA0019/gauge&grab/marshgate_canteen/state
 
-
 The same device template applies to all three topics.
-
-2. Runtime Data Injection (Python)
-
-At runtime, the Python data generator populates the template fields with live values, depending on the location being processed.
-
 Example (Pool Street Café):
 
 {
@@ -78,33 +46,3 @@ Example (Marshgate Canteen):
   "weekday": "Tuesday",
   "timestamp": "2026-01-06T12:30:00"
 }
-
-3. Why a Single Template Was Chosen
-
-Using one shared template:
-
-guarantees data consistency across devices,
-
-simplifies Arduino and Unity subscription logic,
-
-supports physical–digital synchronisation,
-
-aligns with IoT best practices and DaBo design principles.
-
-This approach allows any subscribing device to rely on a stable payload schema, regardless of which location is selected.
-
-Relationship to Live Data Generation
-
-During execution:
-
-Python generates dummy queue and menu values per location.
-
-Values are mapped to the fields defined in payload_structure.
-
-The payload is serialised as JSON.
-
-The message is published via MQTT using the root_topic.
-
-Physical and digital devices receive and interpret the data using the same schema.
-
-This ensures that live MQTT data remains predictable, readable, and reusable across the entire system.
