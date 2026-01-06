@@ -1,3 +1,28 @@
+1. main.py — Live Data Orchestrator
+
+Purpose:
+The core script that runs the live data simulation and publishing loop.
+
+Responsibilities:
+
+Loads the device definitions from device_template.json
+
+Generates simulated queue data at a fixed interval
+
+Calculates queue time using service-speed multipliers
+
+Adds contextual metadata (location, weekday, timestamp)
+
+Publishes JSON payloads to MQTT topics
+
+Key Logic Implemented:
+
+queue_time = number_of_people × service_factor
+
+
+Why it matters:
+This file transforms static dummy values into live, time-based data, making the system behave like a real operational environment.
+
 """
 DaBo main script customised for:
 student/CASA0019/gauge&grab
