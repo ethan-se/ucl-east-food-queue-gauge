@@ -1,8 +1,0 @@
-version: '3.8'
-
-services:
-  dabo-service:
-    build: .
-    env_file:
-      - .env
-    container_name: dabo
