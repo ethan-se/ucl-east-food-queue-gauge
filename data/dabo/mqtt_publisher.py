@@ -1,21 +1,13 @@
-import paho.mqtt.client as mqtt
 import json
-import os
-from dotenv import load_dotenv
+import paho.mqtt.client as mqtt
 
-load_dotenv()
+BROKER = "localhost"
+PORT = 1883
+ROOT_TOPIC = "student/CASA0019/gauge&grab"
 
-class MQTTPublisher:
-    def __init__(self):
-        self.broker = os.getenv('BROKER_ADDRESS')
-        self.port = int(os.getenv('BROKER_PORT'))
-        self.username = os.getenv('MQTT_USERNAME')
-        self.password = os.getenv('MQTT_PASSWORD')
-        self.root_topic = os.getenv('MQTT_TOPIC')
-        self.client = mqtt.Client()
-        self.client.username_pw_set(self.username, self.password)
-        self.client.connect(self.broker, self.port)
+client = mqtt.Client()
+client.connect(BROKER, PORT, 60)
 
-    def publish(self, device_id, data):
-        topic = f"{self.root_topic}/{device_id}"
-        self.client.publish(topic, json.dumps(data))
+def publish_data(location, payload):
+    topic = f"{ROOT_TOPIC}/{location}/state"
+    client.publish(topic, json.dumps(payload))

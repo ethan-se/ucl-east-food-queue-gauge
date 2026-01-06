@@ -1,35 +1,39 @@
-[
-  {
-    "device_type": "pool_street",
-    "count": 1,
-    "root_topic": "",
-    "sensors": {
-      "people_count":   { "type": "random_int", "min": 0, "max": 20 },
-      "special_index":  { "type": "random_int", "min": 1, "max": 5 },
-      "timestamp":      { "type": "timestamp" },
-      "time":           { "type": "normal_time" }
-    }
-  },
-  {
-    "device_type": "marshgate_cafe",
-    "count": 1,
-    "root_topic": "",
-    "sensors": {
-      "people_count":   { "type": "random_int", "min": 0, "max": 20 },
-      "special_index":  { "type": "random_int", "min": 1, "max": 5 },
-      "timestamp":      { "type": "timestamp" },
-      "time":           { "type": "normal_time" }
-    }
-  },
-  {
-    "device_type": "marshgate_canteen",
-    "count": 1,
-    "root_topic": "",
-    "sensors": {
-      "people_count":   { "type": "random_int", "min": 0, "max": 20 },
-      "special_index":  { "type": "random_int", "min": 1, "max": 5 },
-      "timestamp":      { "type": "timestamp" },
-      "time":           { "type": "normal_time" }
-    }
+{
+  "device_type": "GaugeAndGrab",
+  "root_topic": "student/CASA0019/gauge&grab",
+  "description": "Unified device template for all Gauge & Grab food locations. This template defines the MQTT payload structure used by the physical gauge, digital gauge, and digital twin dashboards.",
+  "payload_structure": {
+    "location": "string",
+    "queue_time": "integer",
+    "queue_band": "string",
+    "daily_special": "string",
+    "price": "float",
+    "weekday": "string",
+    "timestamp": "ISO-8601"
   }
-]
+}
+
+"student/CASA0019/gauge&grab/pool_street/state"
+"student/CASA0019/gauge&grab/marshgate_cafe/state"
+"student/CASA0019/gauge&grab/marshgate_canteen/state"
+
+
+{
+  "location": "pool_street",
+  "queue_time": 4,
+  "queue_band": "0-5",
+  "daily_special": "Chicken Wrap",
+  "price": 4.95,
+  "weekday": "Tuesday",
+  "timestamp": "2026-01-06T12:30:00"
+}
+
+{
+  "location": "marshgate_canteen",
+  "queue_time": 12,
+  "queue_band": "10+",
+  "daily_special": "Curry Bowl",
+  "price": 6.20,
+  "weekday": "Tuesday",
+  "timestamp": "2026-01-06T12:30:00"
+}
