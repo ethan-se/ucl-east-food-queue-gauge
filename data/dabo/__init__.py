@@ -1,1 +1,2 @@
-# Marks this folder as a Python package
+# Python package
+
