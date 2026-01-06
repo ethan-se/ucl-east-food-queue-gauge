@@ -13,10 +13,10 @@
   }
 }
 
+"student/CASA0019/gauge&grab/pool_street/state"
+"student/CASA0019/gauge&grab/marshgate_cafe/state"
+"student/CASA0019/gauge&grab/marshgate_canteen/state"
 
-student/CASA0019/gauge&grab/pool_street/state
-student/CASA0019/gauge&grab/marshgate_cafe/state
-student/CASA0019/gauge&grab/marshgate_canteen/state
 
 {
   "location": "pool_street",
