@@ -143,33 +143,38 @@ From the DaBo directory:
 ```bash
 python main.py
 
-Once running, DaBo continuously generates and publishes live MQTT data updates for all three locations.
+## Running DaBo
 
-Limitations
+Once running, **DaBo continuously generates and publishes live MQTT data updates** for all three food locations.  
+These updates are streamed in real time and consumed simultaneously by the **physical queue gauge**, **digital gauge**, and **digital twin dashboards**, ensuring data consistency across all system components.
 
-This project uses simulated (dummy) data to demonstrate a complete end-to-end data pipeline rather than a fully sensor-driven deployment.
+---
 
-Queue times are simulated and are not derived from real-time sensing hardware.
+## Limitations
 
-Human behaviour variability (for example, sudden rushes or staffing changes) is simplified within the data model.
+This project uses **simulated (dummy) data** to demonstrate a complete end-to-end data pipeline rather than a fully sensor-driven deployment.
 
-Data accuracy depends on assumptions informed by on-site observations and staff interviews, rather than continuous automated measurement.
+The following limitations are acknowledged:
 
-These limitations are acknowledged as part of a prototyping and demonstrative approach, designed to explore system architecture, data flow, and physical–digital integration rather than provide exact real-world prediction.
+- Queue times are simulated and are **not derived from real-time sensing hardware**.
+- Human behaviour variability (for example, sudden rushes or staffing changes) is **simplified** within the data model.
+- Data accuracy depends on **assumptions informed by on-site observations and staff interviews**, rather than continuous automated measurement.
 
-Future Development
+These limitations are accepted as part of a **prototyping and demonstrative approach**, focused on exploring system architecture, live data flow, and physical–digital integration rather than producing exact real-world predictions.
 
-Future iterations of the project could significantly enhance realism, accuracy, and scalability. Potential improvements include:
+---
 
-Embedding live user Q&A feedback forms at food locations to collect real user-reported waiting times and experiences.
+## Future Development
 
-Comparing user-reported wait times with simulated values to improve calibration and reliability.
+Future iterations of the project could significantly enhance **realism, accuracy, and scalability**. Potential improvements include:
 
-Introducing machine learning models to predict queue length and waiting time based on historical patterns.
+- Embedding **live user Q&A feedback forms** at food locations to collect real user-reported waiting times and experiences.
+- Comparing **user-reported wait times** with simulated values to improve calibration and reliability.
+- Introducing **machine learning models** to predict queue length and waiting time based on historical patterns.
+- Integrating **real-time sensing technologies**, such as infrared people counters or camera-based detection systems.
+- Storing **historical MQTT data** to enable long-term trend analysis, performance optimisation, and operational insights.
 
-Integrating real-time sensing technologies, such as infrared people counters or camera-based detection systems.
+Together, these developments would support the transition from a **conceptual prototype** toward a **fully data-driven smart queue monitoring system**.
 
-Storing historical MQTT data to enable long-term trend analysis, performance optimisation, and operational insights.
-
-These developments would support the transition from a conceptual prototype toward a fully data-driven smart queue monitoring system.
+---
 
