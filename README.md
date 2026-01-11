@@ -1,7 +1,7 @@
 
 ![Picture of Gauge and Go physical device](./docs/physicalGauge-cropped.jpg)
 
-# Gauge & {Grab}(https://youtube.com/shorts/w2yIuAzpJI0?si=rPMWGunTOieLFzZq)
+# Gauge & Grab
 
 **A Physical-Digital IoT System for Campus Dining Decisions**
 
@@ -11,7 +11,7 @@
 
 ## Overview
 
-Gauge & Grab is an IoT-based decision support system designed to help UCL East campus users quickly choose where to eat by visualizing real-time queue data through both a physical gauge and an augmented reality digital twin.
+Gauge & Grab is an IoT-based decision support system designed to help UCL East campus users quickly choose where to eat by visualizing real-time queue data through both a physical gauge and an augmented reality digital{twin}(https://youtube.com/shorts/w2yIuAzpJI0?si=rPMWGunTOieLFzZq)
 
 The system addresses a common campus challenge: uncertainty about where to dine during peak hours. By combining live MQTT data streams with intuitive physical and digital interfaces, users can make informed dining decisions in under 5 seconds.
 
