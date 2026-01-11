@@ -18,13 +18,13 @@ public class ARObjectPresenceSpawner : MonoBehaviour
 
     private void OnEnable()
     {
-        // ✅ AR Foundation 6: use AddListener, not +=
+        //  AR Foundation 6: use AddListener, not +=
         imageManager.trackablesChanged.AddListener(OnTrackablesChanged);
     }
 
     private void OnDisable()
     {
-        // ✅ Remove the listener when disabled
+        //  Remove the listener when disabled
         imageManager.trackablesChanged.RemoveListener(OnTrackablesChanged);
     }
 
@@ -74,3 +74,4 @@ public class ARObjectPresenceSpawner : MonoBehaviour
         }
     }
 }
+
