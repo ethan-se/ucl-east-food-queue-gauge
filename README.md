@@ -1,6 +1,6 @@
 # Gauge & Grab
 
-**A Physical-Digital IoT System for Campus Dining Decisions**
+**A Physical-[Digital](https://youtube.com/shorts/w2yIuAzpJI0?si=osPyPwr-uZf5rIN4) IoT System for Campus Dining Decisions**
 
 ![Picture of Gauge and Grab physical device](./docs/physicalGauge-cropped.jpg)
 
