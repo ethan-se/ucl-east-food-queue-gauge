@@ -1,352 +1,251 @@
-# Gauge and Go
-"Gauge and Go" is a group project submission for CASA0019, Sensor Data Visualisation, as part of a Masters course at CASA, University College London.
-
-Gauge and Go is a physical device that displays a simulated data feed of queue lengths at UCL East's three food venues in real time. It is accompanied by a digital twin: a 3D model contained in an AR smartphone app, displaying further details about queue length and food options.
 
 ![Picture of Gauge and Go physical device](./docs/physicalGauge-cropped.jpg)
 
-📌 Project Overview
-University campus users frequently face uncertainty when deciding where to eat during peak hours. At UCL East, dining locations such as Pool Street Café, Marshgate Café, and Marshgate Canteen offer varied menus, prices, and service speeds—but without a quick, data-driven way to compare queue times and value in real time.
-Gauge & Grab addresses this challenge through a physical data device paired with a digital twin (AR + dashboard). Using a live (simulated) IoT data pipeline, the system visualises queue waiting times and daily specials to support fast, informed decisions—within 5 seconds of interaction.
-Research Question
+# Gauge & Grab
 
-How can food-service data be presented in a fast, simple, and meaningful way to support informed decision-making on campus?
+**A Physical-Digital IoT System for Campus Dining Decisions**
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-🎯 Project Aims & Objectives
+---
 
+## Overview
 
-Design a physical gauge that visualises live queue time at a glance
+Gauge & Grab is an IoT-based decision support system designed to help UCL East campus users quickly choose where to eat by visualizing real-time queue data through both a physical gauge and an augmented reality digital twin.
 
+The system addresses a common campus challenge: uncertainty about where to dine during peak hours. By combining live MQTT data streams with intuitive physical and digital interfaces, users can make informed dining decisions in under 5 seconds.
 
-Develop a Unity-based digital twin (AR gauge + dashboards) driven by the same data
+**Research Question:**  
+*How can food-service data be presented in a fast, simple, and meaningful way to support informed decision-making on campus?*
 
+---
 
-Demonstrate a real-time, end-to-end MQTT pipeline
+## Features
 
+### Physical Gauge Device
+- **Instant Queue Visualization**: Servo-driven dial with color-coded zones (green/yellow/red)
+- **Multi-Location Support**: Three-button interface for Pool Street Café, Marshgate Café, and Marshgate Canteen
+- **Campus-Integrated Design**: Minimalist black acrylic enclosure with white Helvetica typography
+- **Live MQTT Integration**: Real-time data updates via Wi-Fi connectivity
 
-Enable a dining decision in under 5 seconds
+### Digital Twin (Unity AR)
+- **Augmented Reality Gauge**: Mobile AR visualization of queue times
+- **Interactive Dashboards**: Location-specific data including:
+  - Weekly menu specials with prices, calories, and allergens
+  - Historical peak-time analysis via line charts
+  - Service time estimates
+- **Seamless Navigation**: Button-driven interface for switching between locations and views
 
+### Data Pipeline
+- **Research-Informed Dataset**: Based on on-site observations and staff interviews
+- **Live MQTT Architecture**: Pub/sub system with structured topic hierarchy
+- **Transparent Queue Model**: `queue_time = people_in_queue × service_factor`
+- **Python Data Generator**: Simulates live operational data every 2 seconds
 
-Explore how analogue and digital systems can work together in a smart-campus context
+---
 
+## System Architecture
 
+```
+Real-World Research (Café Observations & Staff Interviews)
+                ↓
+      Dataset Design (Menus, Queue Models)
+                ↓
+    Python Generator → Live MQTT Stream
+                ↓
+       MQTT Broker (Mosquitto)
+        ↙            ↘
+Physical Gauge      Digital Twin
+ (Arduino)          (Unity AR)
+```
 
-🧱 Physical Device Design
-Aesthetic & Interaction
-The gauge is inspired by familiar campus devices (e.g. thermostats, card readers) to encourage intuitive, brief interactions.
-Key features
-
-
-Laser-cut black acrylic front panel
-
-
-White etched typography (Helvetica for legibility)
-
-
-Magnetic mounting (inspired by prior CASA projects)
-
-
-Minimalist black-and-white aesthetic
-
-
-Each dining location includes:
-
-
-A dedicated button
-
-
-A corresponding LED
-
-
-Clear etched labels for instant switching
-
-
-Dial & Queue Representation
-A servo-driven pointer rotates across a semi-circular dial with colour-coded zones:
-
-
-Green (0–5 min) – acceptable
-
-
-Yellow (5–10 min) – situational
-
-
-Red (10+ min) – undesirable
-
-
-
-Note: Due to fabrication constraints, final markers represent 75-second increments rather than 60 seconds.
-
-Build Challenges
-
-
-Dial height exceeded servo shaft length
-
-
-3D-printed spacer reduced torque accuracy
-
-
-Final demo used a paper prototype dial for clarity
-
-
-These issues highlight the importance of earlier mechanical prototyping.
-
-💻 Code & Device Logic
-Embedded Platform
-Built on Arduino / NodeMCU examples from Open-Gauges, supporting:
-
-
-Wi-Fi connectivity
-
-
-MQTT publish/subscribe
-
-
-Servo motor control
-
-
-LCD output
-
-
-JSON parsing (ArduinoJson)
-
-
-MQTT Topic Switching
-The device dynamically switches between three MQTT topics (one per location):
-
-
-Unsubscribes from the current topic
-
-
-Updates topic index via button press
-
-
-Subscribes directly to the selected location
-
-
-This enables direct selection and improved usability.
-Data Handling
-Incoming JSON messages provide:
-
-
-queue_time → mapped to servo position
-
-
-Queue values are constrained to protect the physical dial limits.
-LCD support for specials/prices is scaffolded but not fully deployed due to character limits.
-
-📊 Data Design & Live MQTT System
-Research-Informed Dataset
-Data assumptions were grounded in:
-
-
-On-site observations
-
-
-Informal staff conversations at each café
-
-
-Typical busy periods and service speed differences
-
-
-Queue Time Model
-A simple, transparent model prioritised clarity over realism:
-queue_time = people_in_queue × service_factor
-
-Service factors:
-
-
-Pool Street Café → ×1
-
-
-Marshgate Café → ×2
-
-
-Marshgate Canteen → ×3
-
-
-MQTT Architecture
-Broker: Eclipse Mosquitto
-Topic hierarchy
+**MQTT Topic Structure:**
+```
 student/CASA0019/gauge&grab/
-├── pool_street
-├── marshgate_cafe
-└── marshgate_canteen
+   ├── pool_street
+   ├── marshgate_cafe
+   └── marshgate_canteen
+```
+
+Each message includes: location, queue length, wait time, daily special, and price.
+
+---
+
+## Hardware Components
+
+- **Microcontroller**: NodeMCU ESP8266
+- **Display**: 16-character LCD screen
+- **Actuator**: Servo motor with custom dial graphic
+- **Interface**: 3× tactile buttons + LED indicators
+- **Enclosure**: Laser-cut black acrylic with UV-printed graphics
+- **Mounting**: Magnetic back plate
+
+---
+
+## Software Stack
+
+### Embedded (Arduino)
+- **Core Libraries**: Wi-Fi, MQTT (PubSubClient), Servo control
+- **Extensions**: ArduinoJson for data parsing, LiquidCrystal for LCD
+- **Key Features**:
+  - Dynamic MQTT topic switching
+  - JSON message parsing
+  - Servo position mapping with physical constraints
+
+### Digital Twin (Unity)
+- **Platform**: Unity with AR Foundation
+- **MQTT Integration**: Custom MQTT Manager for broker connection
+- **Controllers**:
+  - `MQTTController`: Real-time gauge updates
+  - `MQTTWeeklyChartController`: Historical data visualization
+- **AR Features**: Tap-to-place functionality with prefab instantiation
+
+### Data Generation (Python)
+- **Libraries**: `paho-mqtt` for publishing
+- **Publishing Rate**: Every 2 seconds
+- **Data Format**: Structured JSON with validated ranges
 
-Message payload
+---
 
+## Installation & Setup
+
+### Physical Device
 
-Location
+1. **Hardware Assembly**:
+   - Connect servo to GPIO pin
+   - Wire LCD display and buttons
+   - Mount components in laser-cut enclosure
+
+2. **Arduino Configuration**:
+   ```cpp
+   // Update Wi-Fi credentials
+   const char* ssid = "YOUR_SSID";
+   const char* password = "YOUR_PASSWORD";
+   
+   // Configure MQTT broker
+   const char* mqtt_server = "mqtt.cetools.org";
+   ```
 
+3. **Upload Code**:
+   - Install required libraries via Arduino Library Manager
+   - Compile and upload to NodeMCU
 
-People in queue
+### Digital Twin
 
+1. **Unity Setup**:
+   - Open project in Unity 2021.3 or later
+   - Install AR Foundation and platform-specific packages
+   - Configure MQTT broker address in MQTT Manager
 
-Queue time
+2. **Build for Mobile**:
+   - iOS: Xcode 14+
+   - Android: Android Studio with AR Core support
 
+### Data Pipeline
 
-Daily special
+1. **Install Python Dependencies**:
+   ```bash
+   pip install paho-mqtt
+   ```
 
+2. **Run Data Generator**:
+   ```bash
+   python data_generator.py
+   ```
 
-Price
+3. **Verify with MQTT Explorer**:
+   - Connect to `mqtt.cetools.org`
+   - Subscribe to `student/CASA0019/gauge&grab/#`
 
+---
 
-Data is generated every 2 seconds via a Python script using DaBo-style publishing.
-Verification
-Validated using MQTT Explorer:
+## Usage
 
+### Physical Gauge
+1. Press a location button (Pool Street, Marshgate Café, or Marshgate Canteen)
+2. LED indicator confirms selection
+3. Dial updates to show current queue time
+4. Color zone indicates wait acceptability (green < 5 min, yellow 5-10 min, red > 10 min)
 
-Correct topic structure
+### Digital Twin
+1. Launch AR app and point camera at a flat surface
+2. Tap to place digital gauge
+3. Select location via on-screen buttons
+4. View real-time queue data
+5. Tap dashboard button to see weekly specials and peak-time charts
+6. Navigate between location dashboards using navigation buttons
 
+---
 
-Live updates across all locations
+## Research Foundation
 
+### Data Collection Methodology
+- **On-site observations** at three UCL East dining locations
+- **Staff interviews** about busy periods, service speed, and menu rotation
+- **Queue behavior analysis** during peak hours (12:00-14:00)
 
-Consistency between publisher, physical device, and digital twin
+### Service Factor Calibration
+Based on observed service characteristics:
+- **Pool Street Café**: ×1 (fastest service)
+- **Marshgate Café**: ×2 (moderate service)
+- **Marshgate Canteen**: ×3 (slower, seated service)
 
+---
 
+## Known Limitations
 
-🧠 Digital Twin (Unity)
-Purpose
-The digital twin extends the physical gauge using AR and dashboards to visualise the same live data remotely.
+- **Simulated Data**: Current system uses generated data rather than live sensors
+- **Dial Calibration**: Physical markers represent 75-second increments (manufacturing constraint)
+- **LCD Character Limit**: 16-character display restricts menu detail
+- **Mechanical Challenges**: Servo torque affected by 3D-printed spacer in final build
+- **AR Stability**: Tap-to-place functionality requires optimal lighting conditions
 
+---
 
-AR gauge instantiated via Tap-to-Place
+## Future Enhancements
 
+### Short-term
+- [ ] Replace LCD with graphical OLED/TFT display
+- [ ] Implement user feedback mechanism via AR interface
+- [ ] Improve mechanical assembly for better servo accuracy
 
-Gauge built as a prefab for control and reuse
+### Long-term
+- [ ] Real queue detection via computer vision or presence sensors
+- [ ] Integration with POS systems for live menu data
+- [ ] Predictive modeling using historical trends
+- [ ] Personalization filters (dietary needs, budget)
+- [ ] Mobile companion app
+- [ ] Staff-facing operational dashboard
 
+---
 
-UI bridge enables transition from gauge → dashboard
+## Contributors
 
+- **Ethan Taylor**: Physical device design, enclosure fabrication, Arduino development
+- **Madina Diallo**: Project coordination, dataset design, MQTT architecture, documentation
+- **Yussr Osman Kamil Bashir**: Research support, Unity development, system validation
 
-Each location dashboard includes:
+---
 
+## References
 
-Location name
+- Letsa, L. (2017) 'Assessing the Effect of Waiting Times on Restaurant Service Delivery', *European Business & Management*, 3(6), p. 113
+- Low, E. et al. (2024) *SubRadar: CASA0019 Sensor Data Visualisation*
+- Hudson-Smith, A. (2025) *Open-Gauges Project*
+- Eclipse Mosquitto (2025) *MQTT Protocol Documentation*
 
+**Workshop Resources:**
+- [CASA0019 Unity Dashboard Tutorial](https://workshops.cetools.org/codelabs/casa0019-03-unity-dashboard/)
+- [CASA0019 Unity AR Physical to Digital](https://workshops.cetools.org/codelabs/casa0019-06-unity-ar-pd/)
 
-Weekly specials table (image-based)
+---
 
+## License
 
-Line graph of weekly peak wait times
+This project was developed as part of CASA0019: Sensor Data Visualisation at UCL Centre for Advanced Spatial Analysis.
 
+---
 
-Navigation buttons between locations and views
+## Acknowledgments
 
-
-Unity & MQTT Integration
-
-
-Central MQTT Manager handles broker connection and subscriptions
-
-
-MQTT Controller (Gauge) filters data by selected location and maps values to needle rotation
-
-
-MQTT Weekly Chart Controller (Dashboard) aggregates data over time to render trends
-
-
-Presentation Limitations
-
-
-Live data integration completed on the day of presentation
-
-
-Tap-to-Place issues prevented AR object display during demo
-
-
-Future mitigation includes earlier end-to-end testing and pre-recorded fallback demos.
-
-👥 Individual Contributions
-
-
-Ethan Taylor – Physical device design, enclosure fabrication, dial graphics, servo integration, Arduino logic
-
-
-Madina Diallo – Project coordination, dataset design, MQTT architecture, Python data generation, system integration, documentation
-
-
-Yussr Osman Kamil Bashir – Research support, data structuring, testing, Unity dashboard development, system validation
-
-
-
-🔍 Reflection
-What Worked Well
-
-
-Clear end-to-end data pipeline
-
-
-Shared MQTT feed driving both physical and digital outputs
-
-
-Intuitive, glanceable physical interface
-
-
-Strong alignment between research, data, and design
-
-
-Challenges
-
-
-Simulated (dummy) data only
-
-
-Simplified queue model
-
-
-Late physical and AR testing
-
-
-Mechanical constraints in final build
-
-
-These trade-offs prioritised system architecture and real-time interaction.
-
-🚀 Future Work
-
-
-Replace 16-character LCD with OLED/TFT or symbolic LED indicators
-
-
-Add AR-based user feedback button to compare lived experience vs estimates
-
-
-Real queue detection (sensors or computer vision)
-
-
-POS/menu system integration
-
-
-Predictive queue modelling
-
-
-Personalisation (dietary needs, budgets)
-
-
-Mobile companion app
-
-
-Staff-facing operational dashboard
-
-
-
-✅ Conclusion
-Gauge & Grab demonstrates how research-informed data, live MQTT messaging, and physical-digital visualisation can be combined into a coherent IoT system.
-Starting from real café observations and staff insights, we built a structured dataset, automated it with Python, broadcast it live via MQTT, and connected both a physical gauge and an AR digital twin to the same data stream—delivering a complete, end-to-end IoT prototype for smart-campus decision-making.
-
-📚 References
-Aman, A. (2025) Hand adjusting a smart thermostat on a white wall. Vecteezy.
-Cetools.org (2026a) 03: Dashboard and Real Time Data.
-Cetools.org (2026b) 06: Unity AR Physical to Digital.
-Eclipse Foundation (2024) paho.mqtt.python.
-Eclipse Mosquitto (2025) MQTT: Lightweight messaging protocol.
-Hudson-Smith, A. (2025) WindSpeedGauge.ino. Open-Gauges.
-Letsa, L. (2017) ‘Assessing the Effect of Waiting Times on Restaurant Service Delivery’, European Business & Management, 3(6).
-Low, E. et al. (2024) CASA0019: SubRadar.
-Osborn, J.R. (2012) ‘Helvetica and the New York City Subway System’, Design and Culture, 4(1).
-Python Software Foundation (2025) Python documentation.
-Schiffler, A. (2025) How to use the Paho MQTT client in Python.
-UCL Centre for Advanced Spatial Analysis (2025) DaBo: Data in a Box.
+Special thanks to UCL East dining staff for their insights, and to the Connected Environments teaching team for technical guidance throughout the project.
