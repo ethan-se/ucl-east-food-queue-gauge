@@ -9,14 +9,14 @@
 
 University campus users frequently face uncertainty when deciding where to eat, particularly during peak hours. At UCL East, dining locations such as Pool Street Café, Marshgate Café, and Marshgate Canteen offer varied menus, daily specials, prices, and service speeds. However, users currently lack a quick, data-driven way to compare queue lengths and menu value in real time. This often leads to inefficiencies, long queues, and dissatisfaction.
 
-Gauge & Grab was developed to address this everyday decision-making challenge through the design of a physical data device paired with a digital twin interface. The project explores how live (simulated) data, delivered through an Internet of Things (IoT) pipeline, can be visualised both analogue-physically and digitally augmented to support rapid, informed choices. (Letsa, 2017)
+Gauge & Grab was developed to address this everyday decision-making challenge through the design of a physical data device paired with a digital twin interface. The project explores how live (simulated) data, delivered through an Internet of Things (IoT) pipeline, can be visualised both analogue-physically and digitally augmented to support rapid, informed choices.
+(Letsa, 2017)
 
 The system allows users to instantly view:
 - Estimated queue waiting time
 - Daily specials and prices (Monday–Friday)
 - Location-specific service characteristics
   
-<img width="212" height="241" alt="image" src="https://github.com/user-attachments/assets/299f59cc-9084-4dae-b5b2-b400c9171152" />
 
 **Research Question:**  
 *How can food-service data be presented in a fast, simple, and meaningful way to support informed decision-making on campus?*
@@ -38,7 +38,8 @@ As a group, our objectives were to:
 
 ### a. Aesthetic & Interaction Design
 
-The physical gauge was designed to integrate naturally into the built environment at UCL East. Its form factor was inspired by devices commonly found near lecture rooms, such as thermostats or card readers, encouraging intuitive, brief interactions upon entering or exiting a space. (Aman, 2025)
+The physical gauge was designed to integrate naturally into the built environment at UCL East. Its form factor was inspired by devices commonly found near lecture rooms, such as thermostats or card readers, encouraging intuitive, brief interactions upon entering or exiting a space. 
+(Aman, 2025)
 
 The enclosure features:
 - A laser-cut black acrylic front panel
