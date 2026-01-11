@@ -1,7 +1,7 @@
 
 ![Picture of Gauge and Go physical device](./docs/physicalGauge-cropped.jpg)
 
-# Gauge & Grab{link}(https://youtube.com/shorts/w2yIuAzpJI0?si=rPMWGunTOieLFzZq)
+# Gauge & {Grab}(https://youtube.com/shorts/w2yIuAzpJI0?si=rPMWGunTOieLFzZq)
 
 **A Physical-Digital IoT System for Campus Dining Decisions**
 
