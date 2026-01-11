@@ -15,6 +15,8 @@ The system allows users to instantly view:
 - Estimated queue waiting time
 - Daily specials and prices (Monday–Friday)
 - Location-specific service characteristics
+  
+<img width="212" height="241" alt="image" src="https://github.com/user-attachments/assets/299f59cc-9084-4dae-b5b2-b400c9171152" />
 
 **Research Question:**  
 *How can food-service data be presented in a fast, simple, and meaningful way to support informed decision-making on campus?*
@@ -43,15 +45,18 @@ The enclosure features:
 - White etched typography using Helvetica, chosen for legibility and familiarity (Osborn, 2012)
 - Magnetic mounting inspired by prior Connected Environments projects (e.g. SubRadar) (Low et al., 2024)
 - A minimalist black-and-white aesthetic to complement existing campus infrastructure.
+- 
+<img width="244" height="136" alt="image" src="https://github.com/user-attachments/assets/11847f94-c41a-4187-ab09-2ced723d528c" />
 
-**[IMAGE PLACEHOLDER: Physical device front view showing black acrylic enclosure with white typography]**
+
 
 Each dining location is represented by:
 - A dedicated button
 - A corresponding LED indicator
 - Clear etched labels on the front panel
+  
+  <img width="343" height="172" alt="image" src="https://github.com/user-attachments/assets/4bb741b6-09ef-4585-8646-79e2517a47fc" />
 
-**[IMAGE PLACEHOLDER: Close-up of button interface showing three location buttons with LED indicators]**
 
 This allows users to switch between locations with a single press, immediately updating the data displayed.
 
@@ -64,7 +69,9 @@ Queue time is visualised through a servo-driven pointer rotating across a semi-c
 
 The dial graphic was designed in Figma and UV-printed onto acrylic. Due to manufacturing constraints, the final markers represent 75-second increments rather than the intended 60 seconds, an acknowledged limitation retained due to time constraints.
 
-**[IMAGE PLACEHOLDER: Dial graphic showing color-coded zones (green/yellow/red) with servo pointer]**
+<img width="167" height="193" alt="image" src="https://github.com/user-attachments/assets/c8c2aa1c-3398-4657-a28a-4c7e1474cbc9" />
+
+
 
 ### c. Build Challenges
 
@@ -92,7 +99,8 @@ Additional libraries were introduced to support:
 - LCD screen output
 - JSON parsing via Arduino Json
 
-**[IMAGE PLACEHOLDER: Code snippet or diagram showing Arduino library architecture]**
+<img width="255" height="279" alt="image" src="https://github.com/user-attachments/assets/eedf1b4b-f221-4f56-8b1d-593c77d3f5c8" />
+
 
 ### b. MQTT Topic Switching
 
@@ -115,7 +123,8 @@ Due to time limitations, LCD display of daily specials and prices was not fully 
 
 Queue values are constrained to a maximum range to prevent the servo exceeding the physical limits of the dial.
 
-**[IMAGE PLACEHOLDER: Code snippet showing JSON parsing and servo mapping logic]**
+<img width="373" height="175" alt="image" src="https://github.com/user-attachments/assets/3ce434f1-3524-4ba2-bb25-090bb78952be" />
+
 
 ---
 
@@ -136,7 +145,8 @@ Staff were asked about:
 
 These insights informed our assumptions and data structure.
 
-**[IMAGE PLACEHOLDER: Photo of on-site research at one of the cafés or notes from staff interviews]**
+<img width="486" height="249" alt="image" src="https://github.com/user-attachments/assets/089bb6e4-b34e-4bd6-8054-95c1e3f1572d" />
+
 
 ### b. Queue Time Model
 
@@ -152,15 +162,17 @@ Service factors differed by location based on observed service speed:
 - **Marshgate Canteen**: ×3
 
 This approach prioritised clarity and reproducibility over realism, appropriate for a demonstrative prototype.
-
 (Eclipse Mosquitto, 2025)  
 (Eclipse Foundation, 2024)
 
-**[IMAGE PLACEHOLDER: Diagram or table showing queue calculation model with service factors]**
+<img width="317" height="282" alt="image" src="https://github.com/user-attachments/assets/c4cf73a3-039b-42c1-8846-b63bcafc073b" />
 
 ### c. MQTT Architecture
 
 Data is published using the following topic hierarchy:
+
+<img width="409" height="218" alt="image" src="https://github.com/user-attachments/assets/72580a06-8a3c-4a0e-b481-45bf7980d1f9" />
+
 
 ```
 student/CASA0019/gauge&grab/
@@ -178,7 +190,9 @@ Each message includes:
 
 Data is generated every 2 seconds via a Python script using Dabo-style publishing, simulating a live operational system.
 
-**[IMAGE PLACEHOLDER: MQTT topic structure diagram or MQTT Explorer screenshot]**
+<img width="230" height="159" alt="image" src="https://github.com/user-attachments/assets/c1772c00-9a47-4af2-82c1-506d7d8d75a3" />
+
+
 
 ### d. Verification
 
@@ -210,13 +224,16 @@ Digital Twin Reads (Unity AR)
 
 ## 6. Digital Twin (Unity)
 
-**[IMAGE PLACEHOLDER: Unity digital twin interface overview]**
+<img width="122" height="147" alt="image" src="https://github.com/user-attachments/assets/42ed12dc-2973-434c-9747-a7ad43d2e5dd" />
 
-### a. Purpose of the Digital Twin
+
+## a.	Purpose of the Digital Twin
+
 
 The digital twin complements our physical gauge by using augmented reality to visualise our dataset into an interactive digital gauge and dashboards for each location. The AR gauge receives live data from MQTT enabling users to pick their chosen location and view queue times and specials efficiently without having to be in proximity to the physical gauge. To ensure the user would be able to view the gauge in AR, the gauge was turned into a prefab in unity to ensure better control of the 3D model. In the scene with the XR Origin game object selected the tap to place script is added as a component in the inspector window with the digital gauge prefab selected as the game object to instantiate (workshop 6 Cetools.org, 2026). It is vital that the AR object (the digital gauge prefab) only lives inside the tap to place component and not as a game object in the scene hierarchy. An AR object UI bridge script is added as a component to the AR object prefab to enable the button to allow users to transition from the prefab to the dashboard.
 
-**[IMAGE PLACEHOLDER: Unity AR setup showing XR Origin and tap-to-place configuration]**
+<img width="451" height="152" alt="image" src="https://github.com/user-attachments/assets/036c16a2-4702-4707-b52d-f92134a62c1c" />
+
 
 The Dashboard expands on the gauge by turning historical and live data into digestible charts and tables that allow users to better plan and understand their canteen options (Workshop 3 Cetools.org, 2026). The dashboard exists as a child of the AR object. Each location's dashboard includes:
 - Location name 
@@ -224,19 +241,25 @@ The Dashboard expands on the gauge by turning historical and live data into dige
 - A line graph that represents the locations weekly peak wait time. The graph enables users to plan and better understand wait time trends for the week. 
 - Buttons were used to allow user to cycle from the AR object to the dashboard, A further three buttons were added to allow users to switch dashboards and return to the gauge. A dashboard navigation script ensures that buttons work smoothly and allow users switch between the dashboards.
 
-**[IMAGE PLACEHOLDER: Dashboard interface showing menu table and weekly peak time line graph]**
+<img width="261" height="165" alt="image" src="https://github.com/user-attachments/assets/e89f1986-b8aa-4dc2-8d18-c9dcbb986599" />
+
 
 ### b. Unity & MQTT Integration
 
 Our digital twin system transforms data received from MQTT into interactive and dynamic representations through our digital gauge and dashboards. An MQTT manager game object with an MQTT manager script as a component is added to the scene. The MQTT manager receives messages from MQTT ensuring connection the MQTT broker and subscription to our topics. The transformation of MQTT data into our interactive representations is done through two MQTT controller scripts.
 
-**[IMAGE PLACEHOLDER: Unity hierarchy showing MQTT Manager setup]**
+<img width="441" height="203" alt="image" src="https://github.com/user-attachments/assets/376914c2-0b94-4ba0-98bb-75dfd1d8c933" />
+
 
 For the digital gauge, an MQTT controller script was attached as a component of our AR object. This script locates the MQTT manager in the scene and receives data from its subscribed topics (workshop 6 Cetools.org, 2026). The MQTT controller script ensures that the gauge only displays data from the user's chosen location and ignores messages related to the other locations. Further the script changes the messages which it receives as Json text into C# strings and integers. The queue time is then calculated in the script as well as ensuring that the queue time displayed works with our gauge's range of rotation, start and end values, and gauge needles rotation.
 
-**[IMAGE PLACEHOLDER: Code snippet showing MQTT controller script for digital gauge]**
+<img width="312" height="189" alt="image" src="https://github.com/user-attachments/assets/912e7b70-5cbb-4505-8b6f-8df967e56d3a" />
+
 
 As the dashboard exists as a child of the AR object the MQTT WeeklyChart Controller dashboard controller script is placed as a component inside the dashboard. The dashboard controller script receives data from the same MQTT manager however this script composites the data received over time to allow for it to be analysed. The controller tracks the busiest times for each location and visualises via a line chart for each location that displays weekly peak times.
+
+<img width="380" height="206" alt="image" src="https://github.com/user-attachments/assets/b900069a-0e24-4a0e-abc8-3a52c5f2db7a" />
+
 
 ### c. Limitations During Presentation
 
