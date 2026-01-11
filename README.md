@@ -321,7 +321,7 @@ Future iterations could include:
 
 - Staff-facing operational dashboard
 
-Such developments would transform Gauge & Grab into a deployable smart-campus service. (Letsa, 2017)
+Such developments would transform Gauge & Grab into a deployable smart-campus service (Letsa, 2017).
 
 ---
 
