@@ -10,6 +10,7 @@
 University campus users frequently face uncertainty when deciding where to eat, particularly during peak hours. At UCL East, dining locations such as Pool Street Café, Marshgate Café, and Marshgate Canteen offer varied menus, daily specials, prices, and service speeds. However, users currently lack a quick, data-driven way to compare queue lengths and menu value in real time. This often leads to inefficiencies, long queues, and dissatisfaction.
 
 Gauge & Grab was developed to address this everyday decision-making challenge through the design of a physical data device paired with a digital twin interface. The project explores how live (simulated) data, delivered through an Internet of Things (IoT) pipeline, can be visualised both analogue-physically and digitally augmented to support rapid, informed choices.
+
 (Letsa, 2017)
 
 The system allows users to instantly view:
@@ -39,6 +40,7 @@ As a group, our objectives were to:
 ### a. Aesthetic & Interaction Design
 
 The physical gauge was designed to integrate naturally into the built environment at UCL East. Its form factor was inspired by devices commonly found near lecture rooms, such as thermostats or card readers, encouraging intuitive, brief interactions upon entering or exiting a space. 
+
 (Aman, 2025)
 
 The enclosure features:
@@ -46,7 +48,7 @@ The enclosure features:
 - White etched typography using Helvetica, chosen for legibility and familiarity (Osborn, 2012)
 - Magnetic mounting inspired by prior Connected Environments projects (e.g. SubRadar) (Low et al., 2024)
 - A minimalist black-and-white aesthetic to complement existing campus infrastructure.
-- 
+  
 <img width="244" height="136" alt="image" src="https://github.com/user-attachments/assets/11847f94-c41a-4187-ab09-2ced723d528c" />
 
 
@@ -163,6 +165,7 @@ Service factors differed by location based on observed service speed:
 - **Marshgate Canteen**: ×3
 
 This approach prioritised clarity and reproducibility over realism, appropriate for a demonstrative prototype.
+
 (Eclipse Mosquitto, 2025)  
 (Eclipse Foundation, 2024)
 
