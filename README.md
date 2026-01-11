@@ -132,6 +132,10 @@ Each message includes: location, queue length, wait time, daily special, and pri
 
 ### Digital Twin
 
+<img width="892" height="564" alt="Screenshot 2026-01-09 at 18 26 07" src="https://github.com/user-attachments/assets/ec39c62e-2964-46b6-962c-7c037fd153ca" />
+
+
+
 1. **Unity Setup**:
    - Open project in Unity 2021.3 or later
    - Install AR Foundation and platform-specific packages
