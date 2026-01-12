@@ -1,5 +1,25 @@
 # Gauge & Grab
 
+## Project Authors
+
+This project was collaboratively developed by:
+
+Ethan Taylor
+
+Madina Diallo
+
+Yussr Osman Kamil Bashir
+
+🔗 GitHub Repository
+
+The full source code, documentation, and project assets are available at:
+
+👉 https://github.com/ethan-se/ucl-east-food-queue-gauge
+
+## 📄 About This Repository
+This repository contains the code, documentation, and supporting materials for the UCL East Food Queue Gauge project, developed as part of an academic group assignment.
+
+
 **A Physical-[Digital](https://youtube.com/shorts/w2yIuAzpJI0?si=osPyPwr-uZf5rIN4) IoT System for Campus Dining Decisions**
 
 ![Picture of Gauge and Grab physical device](./docs/physicalGauge-cropped.jpg)
